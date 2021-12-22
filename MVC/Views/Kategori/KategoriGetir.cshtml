@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Kategori Getir";
+}
+@model MVC.Models.Kategoriler
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Kategori Düzenleme Sayfası
+                </div>
+                <div class="block-controls">
+                    <a href="/Kategori/Index">
+                        <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    </a>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                   @using (Html.BeginForm("Guncelle", "Kategori", FormMethod.Post))
+                   {    
+                       <div class="form-group">   
+                          @Html.LabelFor(x=>x.KategoriAdi)
+                           @Html.TextBoxFor(x => x.KategoriAdi, new { @class="form-control"})
+                       <br />
+                           @Html.LabelFor(x => x.Tanimi)
+                           @Html.TextBoxFor(x => x.Tanimi, new { @class = "form-control" })
+                       </div>
+
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                   }        
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

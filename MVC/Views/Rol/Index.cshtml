@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Roller";
+}
+@model List<string>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Roller
+                </div>
+                <div class="block-controls">
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                    <a href="/Rol/Ekle" class="btn btn-success rounded">Yeni Rol Ekle</a>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Rol Adı</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (string rol in Model)
+                            {
+                                <tr>
+                                  <td><h5 style="font-size:x-large;"><span class="label label-info ">@rol</span></h5></td>
+                                    </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

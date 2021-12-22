@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "Tedarikçiler";
+}
+@using MVC.Models
+
+@model List<Tedarikciler>
+<!--MODAL POPUP EKLEMEK İÇİN-->
+@section head{
+    <style>
+        #small-modal {
+            z-index: 9999999;
+            position: absolute;
+        }
+
+        .HATA {
+            color: red;
+        }
+    </style>
+}
+@section   body{
+    <div class="modal fade small-modal" id="small-modal" tabindex="-1" role="dialog" aria-labelledby="small-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" data-border-top="multi">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="small-modal-label">Tedarikçi Sil</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="mesaj"></p>
+                    <p class="HATA"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">İptal</button>
+                    <!--clasına tedSil verdim -->
+                    <button type="button" class="btn btn-danger tedSil">Evet</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Tedarikçiler
+                </div>
+                <div class="block-controls">
+                    <!--***KAPATMA DÜĞMESİ   <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>-->
+                    <!--***AŞAĞIDAKİ <A> DA EKLEME BUTONU EKLEDIM Uİ-BUTTONS DAN BUTON SEÇTİM CLASINI ALDIM-->
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                    <a href="/Tedarikci/Ekle" class="btn btn-success rounded">Yeni Tedarikçi Ekle</a>
+                </div>
+            </div>
+            <div class="block-content-outer" >
+                <div class="block-content-inner">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Şirket Adı</th>
+                                <th>Müşteri Adı</th>
+                                <th>Adres</th>
+                                <th>Şehir</th>
+                                <th>Bölge</th>
+                                <th>Posta Kodu</th>
+                                <th>Ülke</th>
+                                <th>Telefon</th>
+                                <th>Faks</th>
+                                <th>Resim Ekle</th>
+                                <th></th>
+                                <th>Güncelle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Tedarikciler ted in Model)
+                            {
+                                <tr>
+                                    <td><span class="label label-primary">@ted.SirketAdi</span></td>
+                                    <td>@ted.MusteriAdi</td>
+                                    <td>@ted.Adres</td>
+                                    <td>@ted.Sehir</td>
+                                    <td>@ted.Bolge</td>
+                                    <td>@ted.PostaKodu</td>
+                                    <td>@ted.Ulke</td>
+                                    <td>@ted.Telefon</td>
+                                    <td>@ted.Faks</td>
+                                    <td>
+                                        @{
+                                            var x = "~/tedarikciresim/" + ted.TedarikciID + ".jpg";
+                                            <img src="@Url.Content(x)" width="100" height="100" />
+                                        }
+                                    </td>
+                                    <td >@Html.ActionLink("Logo Yükle", "SImage", new { id = ted.TedarikciID }, new { @class = "btn btn-warning" })</td>
+                                    <td><a href="/Tedarikci/Edit/@ted.TedarikciID" class="btn btn-primary">Güncelle</a></td>
+                                    <!--AJAXLA SİL YAPMA İŞLEMİ SECTİON SCRİPTSDE VAR-->
+                                    <!--data ktg id arka planda sil butonlarına İD veriyor -->
+                                    <td>
+                                        <button class="btn btn-danger modalAc" data-toggle="modal" data-target="#small-modal" data-sirketadi="@ted.SirketAdi" data-id="@ted.TedarikciID">
+                                            Sil
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/assets/js/required/jquery-1.11.1.min.js"></script>
+    <script>
+        $(".modalAc").click(function () {
+            //satırdaki şirket adını almak için buttonda data açtık
+            var sirketAdi = $(this).data("sirketadi");
+            //clası modal-body olan elamanın içindeki classı mesaj olan P nin html ine sirket adi yaz
+            $(".modal-body>p.mesaj").html(sirketAdi + " Tedarikçisi Silinsin mi?");
+            //sile tıklarken butona tıklarken id yi sakla
+            var id = $(this).data("id");
+            $(".tedSil").data("id", id);
+        });
+        //classı tedSil olan butonuna tıklandıgında
+        $(".tedSil").click(function () {
+            var id = $(this).data("id");
+            $.ajax({
+                type: "POST",
+                url: "/Tedarikci/Sil/" + id,
+                success: function (durum) {
+                    if (durum == "Başarılı") {
+                        window.location.replace("/Tedarikci/Index");
+                    }
+                    else {
+                        $(".modal-body>p.HATA").html("Tedarikçi Silme Anında Hata Oluştu Tekrar Deneyiniz!");
+                    }
+                },
+            });
+        });
+    </script>
+}

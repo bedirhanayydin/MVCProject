@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "İletişim Sayfası";
+    Layout = "~/Views/Shared/_SiteLayoutPage.cshtml";
+}
+
+ 
+<div class="w3-container w3-padding-32" id="contact"><br />
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" style="font-size:35px">İletişim Formu</h3>
+    <p>Şikayet ve Memnuniyetinizi Bizimle Paylaşırsanız Seviniriz... Sizin Memnuniyetiniz Bizim Görevimiz... Sağlıklı Günler.</p>      <br />
+    <form class="form-group" id="contactForm" method="post">
+        <input class="w3-input w3-border" type="text" placeholder="Ad Soyad" required="" name="ContactName">
+        <br />
+        <input class="w3-input w3-section w3-border" type="text" placeholder="E-mail" required="" name="ContactEmail">
+        <br />
+
+        <input class="w3-input w3-section w3-border" type="text" placeholder="Görüşleriniz İçin Teşekkürler" required="" name="ContactComment"> <br />
+        <button class="w3-button  w3-section" type="submit" style="background-color:red">
+            <i class="fa fa-paper-plane"></i> Mesajı Gönder
+        </button>
+    </form>
+</div>

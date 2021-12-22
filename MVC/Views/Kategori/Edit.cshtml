@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model MVC.Models.Kategoriler
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Kategori Düzenleme Sayfası
+                </div>
+                <div class="block-controls">
+                    <a href="/Kategori/Index">
+                        <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    </a>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                  @using (Html.BeginForm())
+                  {
+                    @Html.AntiForgeryToken()
+
+                    
+                       
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.KategoriID)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.KategoriAdi)                          
+                            @Html.TextBoxFor(model => model.KategoriAdi, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.KategoriAdi)
+                            <br />
+                          
+                        @Html.LabelFor(model => model.Tanimi)
+                        @Html.TextBoxFor(model => model.Tanimi, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Tanimi)
+                        </div>
+                        
+                        <div class="form-group">
+                                <input type="submit" value="Güncelle" class="btn btn-primary" />
+                           
+                        </div>
+                    
+                  }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

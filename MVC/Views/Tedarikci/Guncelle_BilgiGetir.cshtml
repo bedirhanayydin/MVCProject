@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Guncelle_BilgiGetir";
+}
+@model MVC.Models.Tedarikciler
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Tedarikçi Güncelleme Sayfası
+                </div>
+                <div class="block-controls">
+                    <a href="/Tedarikci/Index">
+                        <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    </a>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                        @using (Html.BeginForm("Guncelle", "Tedarikci", FormMethod.Post))
+                        {
+                            <label>Şirket Adı</label>
+                            @Html.TextBoxFor(x => x.TedarikciID, new { @class="form-control"})
+                            <br />
+                            <label>Müşteri Adı</label>
+                            @Html.TextBoxFor(x => x.MusteriAdi, new { @class = "form-control" })
+                            <br />
+                            <label>Adres</label>
+                            @Html.TextBoxFor(x => x.Adres, new { @class = "form-control" })
+                            <br />
+                            <label>Şehir</label>
+                            @Html.TextBoxFor(x => x.Sehir, new { @class = "form-control" })
+                            <br />
+                            <label>Bölge</label>
+                            @Html.TextBoxFor(x => x.Bolge, new { @class = "form-control" })
+                            <br />
+                            <label>Posta Kodu</label>
+                            @Html.TextBoxFor(x => x.PostaKodu, new { @class = "form-control" })
+                            <br />
+                            <label>Ülke</label>
+                            @Html.TextBoxFor(x => x.Ulke, new { @class = "form-control" })
+                            <br />
+                            <label>Telefon</label>
+                            @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+                            <br />
+                            <label>Faks</label>
+                            @Html.TextBoxFor(x => x.Faks, new { @class = "form-control" })
+                            <br />
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+
+                        }
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

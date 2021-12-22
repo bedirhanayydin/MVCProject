@@ -1,0 +1,33 @@
+﻿
+<!DOCTYPE html>
+<html>
+<title>Aydın Depo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+    @RenderSection("head", false);
+</head>
+<body>
+    <div class="w3-top" >
+        <div class="w3-bar  w3-wide w3-padding w3-card"  style="background-color:#f14141">
+            <a href="#home" class="w3-bar-item w3-button"><b>AYDIN</b> A.Ş.</a>
+            <!-- Float links to the right. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+                <a href="/Hakkında" class="w3-bar-item w3-button">Hakkımızda</a>
+                <a href="/SiteÜrün/Getir" class="w3-bar-item w3-button">Ürünler</a>
+                <a href="/SiteTedarikci/Getir" class="w3-bar-item w3-button">Tedarikçiler</a>
+                <a href="/Contact/Contact" class="w3-bar-item w3-button">İletişim Formu</a>
+                <a href="/Home/Index" class="w3-bar-item w3-button">Admin Giriş</a>
+            </div>
+        </div>
+    </div>
+      @RenderBody()
+
+    <!-- Footer -->
+    <footer class="w3-center  w3-padding-16" style="background-color:#f14141">
+        <p>by-BEDİRHAN AYDIN</p>
+    </footer>
+
+</body>
+</html>

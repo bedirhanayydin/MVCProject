@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "ResımEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Anasayfana Resim Ekle</h2>
+@using (Html.BeginForm("ResımEkle", "AnasayfaResim", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Hidden("HiddenId", Url.RequestContext.RouteData.Values["id"])
+    <p>
+        @Html.TextBox("UploadedImage", "", new { type = "File" })
+    </p>
+    <p>
+        <input type="submit" value="Yükle" />
+    </p>
+}
+
+@{
+    if (ViewBag.Message != null)
+    {
+        var a = "~/anasayfaresim/" + Url.RequestContext.RouteData.Values["id"] + ".jpg";
+        @ViewBag.Message
+        <p>
+            <img src="@Url.Content(a)" width="100" height="100" />
+        </p>
+    }
+}
+
+<hr />
+

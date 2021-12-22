@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Ürün Düzenleme Sayfası";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using MVC.Models
+@model MVC.Models.Urunler
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Ürün Güncelleme Sayfası
+                </div>
+                <div class="block-controls">
+                    <a href="/Urun/Index">
+                        <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    </a>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+
+
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model =>model.UrunID)
+
+                        <label>Ürün Adı</label>
+                        @Html.TextBoxFor(x => x.UrunAdi, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UrunAdi)
+
+                        <br />
+                            <label>Tedarikçi Adı</label>
+                            <select class="form-control" name="TedarikciID">
+                                @foreach (Tedarikciler ted in ViewBag.Tedarikciler)
+                                {
+                                    <option value="@ted.TedarikciID">@ted.SirketAdi</option>
+                                }
+                            </select>                      
+                              @Html.ValidationMessageFor(model => model.Tedarikciler.SirketAdi)
+
+
+                            <br />
+                            <label>Kategori Adı</label>
+                            <select class="form-control" name="KategoriID">
+                                @foreach (Kategoriler ktg in ViewBag.Kategoriler)
+                                {
+                                    <option value="@ktg.KategoriID">@ktg.KategoriAdi</option>
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(model => model.Kategoriler.KategoriAdi)
+
+                          
+                            <br />
+                            <label>Fiyat</label>
+                            @Html.TextBoxFor(x => x.Fiyat, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Fiyat)
+
+                            <br />
+                         
+                            <label>Stok</label>
+                            @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Stok)                           
+                            <br />
+                            <button type="submit" class="btn btn-primary" value="Güncelle">Güncelle</button>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

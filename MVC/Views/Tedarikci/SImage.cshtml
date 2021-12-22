@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "SImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Firma Logo Ekle</h2>
+@using (Html.BeginForm("SImage", "Tedarikci", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Hidden("HiddenId", Url.RequestContext.RouteData.Values["id"])
+    <p>
+        @Html.TextBox("UploadedImage", "", new { type = "File" })
+    </p>
+    <p>
+        <input type="submit" value="Yükle" />
+    </p>
+}
+
+@{
+    if (ViewBag.Message != null)
+    {
+        var a = "~/tedarikciresim/" + Url.RequestContext.RouteData.Values["id"] + ".jpg";
+        @ViewBag.Message
+        <p>
+            <img src="@Url.Content(a)" width="100" height="100" />
+        </p>
+    }
+}
+
+<hr />
+<p>@Html.ActionLink("Tedarikçi Listesi", "Index")</p>

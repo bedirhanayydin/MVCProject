@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Ekle";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Tedarikçi Ekleme Sayfası
+                </div>
+                <div class="block-controls">
+                    <a href="/Tedarikci/Index">
+                        <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    </a>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <form action="/Tedarikci/Ekle" method="post" role="form">
+                        <!--ACTİON EKLEDIM tedarikçi CONTOLOREDAKI URUNEKLEYE GÖNDERSIN-->
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Şirket Adı:</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Şirket Adı Giriniz" name="SirketAdi">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Müşteri Adı:</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Müşteri Adı Giriniz" name="MusteriAdi">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Adres:</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Adres Giriniz" name="Adres">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Şehir:</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Sehir Giriniz" name="Sehir">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Bölge:</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Bölge Giriniz" name="Bolge">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Posta Kodu:</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Posta Kodu Giriniz" name="PostaKodu">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Ülke:</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ülke Giriniz" name="Ulke">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Telefon:</label>
+                            <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telefon Giriniz" name="Telefon">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Faks:</label>
+                            <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Faks Giriniz" name="Faks">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

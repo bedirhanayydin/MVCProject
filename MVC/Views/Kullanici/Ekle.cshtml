@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Yeni Üye Ekle";
+}
+@section head{
+    <style>
+        #hata{
+                   color:red;
+                   font-size:16px;
+        }
+    </style>
+    } 
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Üye Ekleme Sayfası
+                </div>
+                <div class="block-controls">
+                    <a href="/Kullanici/Index">
+                        <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    </a>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <form action="/Kullanici/Ekle" method="post" role="form">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Kullanıcı Adı:</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Kullanıcı Adı Giriniz" name="KullaniciAdi">
+                            <!--Place Holder Özelliği Hiçbişey Yazmayınca Arkada Gözüken Textdir-->
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Şifre:</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Şifre Giriniz" name="Sifre" min="3">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">E-Mail:</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="E-Mail Giriniz" name="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Soru:</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Soru Giriniz" name="GizliSoru">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Cevap:</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Cevap Giriniz" name="GizliCevap">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </form>
+
+                    <span id="hata">@ViewBag.Mesaj</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

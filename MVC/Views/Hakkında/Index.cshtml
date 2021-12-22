@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayoutPage.cshtml";
+}
+@using MVC.Models
+@model List<MVC.Models.Anasayfa>
+
+<div class="w3-row-padding ">
+    @foreach (var a in Model)
+    {
+        <div class="w3-col l3 m6 w3-margin-bottom">
+            @{
+                var d = "~/anasayfaresim/" + a.AnasayfaID + ".jpg";
+                <img src="@Url.Content(d)" width="1380" height="600">
+            }
+            <h6 class="w3-border-bottom w3-border-light-grey w3-padding-16 " style="font-family: sans-serif;font-size:35px;">@a.AnasayfaBaslik</h6>
+        </div>
+                }
+</div>
+<div class="w3-container w3-padding-32" id="about">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 "style="font-family: sans-serif;font-size:35px;">Hakkımızda</h3>
+    <p>
+        1967 yılında, Ostim’de bir sanayi bölgesi geliştirmek amacıyla kurulan Ostim Kooperatifi, geçtiğimiz süreçte arazi temininden başlamak üzere sanayi bölgesi tasarımı ve kurulumu konusunda zengin bir birikime sahip olmuştur. Ostim Sanayi Bölgesinin altyapı ve üstyapı yatırımlarını tamamlayan Ostim Kooperatifi, 2000 üyesini sadece gayrimenkul sahibi yapmakla kalmamış, üyelerini sanayiyle, ticaretle ve yatırımcılıkla da buluşturmuş; üyelerinin hakkı olan gayrimenkuller dağıtıldıktan sonra kalan gayrimenkuller aktife konularak Ostim Endüstriyel Yatırımlar ve İşletme A.Ş. kurulmuştur. Çok ortaklı olarak kurulan ve SPK’ya tabi olan Şirketimizin payları 2012 yılı mayıs ayından itibaren yeni kurulan İstanbul Menkul Kıymetler Borsası, Serbest İşlemler Platformu’nun ilk şirketi olarak işlem görmeye başlamış; 2013 yılı Haziran ayından itibaren Borsa İstanbul A.Ş.’nin İkinci Ulusal Pazarında, 2015 yılı Kasım ayında yapılan düzenleme ile birlikte de Ana Pazarda işlem görmeye başlamıştır.
+
+        Ostim Yatırım A.Ş., Ostim Kooperatifi tarafından kendisine devredilen dükkan ve iş merkezlerinin yönetiminin yanı sıra oluşturduğu profesyonel inşaat ekibi ile sahip olduğu arsa ve araziler üzerinde birçok iş merkezi, üretim tesisi, konut ve altyapı projelerini de hayata geçirmiştir.
+        Ostim Yatırım A.Ş. Ostim Organize Sanayi Bölgesi’nin rekabet gücünü artırmaya yönelik pek çok proje gerçekleştirmiştir. Bölgenin elektrik ihtiyacını karşılamaya yönelik Elektrik Santrali, elektriğin dağıtımı için gerekli yazılım ve donanım sistemleri, Ostim Teknopark, telekomünikasyon yatırımları ve ihracat merkezi bu projelerden birkaçıdır.
+        Ostim Yatırım A.Ş. Ostim’deki kobi’lerle birlikte yurtiçi ve yurtdışında proje ortaklıkları yürütmekte ve projelere sunduğu profesyonel destek ile Ostim’in sahip olduğu mühendislik, tasarım ve imalat gücünü bir araya getirmekte, bu gücü sistematik bir yaklaşımla pazara entegre etmektedir. Ostim’de üretilen ürünlerin yurtiçi ve yurtdışı pazarlarda tanıtılması ve pazarlanması da proje yönetimi yaklaşımıyla yürütülmektedir.
+        Ostim’in proje zenginliğini ve gücünü, kendi kurumsal yaklaşımı ve esnek çalışma anlayışıyla buluşturan Şirketimiz proje tabanlı yaklaşımıyla ithal edilen ürünlerin yerlileştirilmesi gibi misyon içeren projelerden anahtar teslimi tesis kurulumuna kadar, yerel, ulusal ve yabancı pazarlarda kurduğu kurumsal ilişkilerle faaliyet göstermektedir.
+        Şirketimiz son yıllarda yoğun olarak faaliyet gösterdiği komşu ülke Irak’ta 2011 yılında kendi şubesini açmıştır.
+
+    </p>
+</div>

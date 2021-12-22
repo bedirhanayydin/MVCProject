@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/Shared/_SiteLayoutPage.cshtml";
+}
+@using MVC.Models
+@model List<MVC.Models.Tedarikciler>
+        
+ 
+    <div class="w3-container w3-padding-32" id="ted">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" style="font-size:35px">Tedarikçiler</h3>
+    </div>
+<div class="w3-row-padding ">
+    @foreach (var a in Model)
+    {
+        <div class="w3-col l3 m6 w3-margin-bottom">
+            @{
+                var d = "~/tedarikciresim/" + a.TedarikciID + ".jpg";
+                <img src="@Url.Content(d)" width="200" height="200">
+            }
+            <h3>@a.SirketAdi</h3>
+            <h3>@a.MusteriAdi</h3>
+            <p class="w3-opacity">İletişim:@a.Telefon</p>
+            <p>Adres:@a.Adres</p>
+            <p>Şehir:@a.Sehir<p>
+</div>
+   }
+</div>
+

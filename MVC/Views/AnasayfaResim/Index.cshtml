@@ -1,0 +1,59 @@
+﻿
+
+
+@{
+    ViewBag.Title = "Anasayfaya Resim Ekle";
+}
+@using MVC.Models
+
+@model List<Anasayfa>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Resim Ekle
+                </div>
+                <div class="block-controls">
+                  
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+
+                 </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Baslik</th>
+                                
+                                <th>Resim Ekle</th>
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Anasayfa a in Model)
+                            {
+                                <tr>
+                                    <td><h4>@a.AnasayfaBaslik</h4></td>
+                                    <td>
+                                        @{
+                                            var x = "~/anasayfaresim/" + a.AnasayfaID + ".jpg";
+                                            <img src="@Url.Content(x)" width="300" height="200" />
+                                        }
+                                    </td>
+                                    
+                                    <td>@Html.ActionLink("Anasayfaya Resim Yükle", "ResımEkle", new { id = a.AnasayfaID }, new { @class = "btn btn-warning" })</td>
+                                   
+                                </tr>
+                                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

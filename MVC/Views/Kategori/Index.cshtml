@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+@using MVC.Models
+@model List<Kategoriler>
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Kategoriler
+                </div>
+                <div class="block-controls">
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                <a href="/Kategori/Ekle" class="btn btn-success rounded">Yeni Kategori Ekle</a>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Kategori Adı</th>
+                                <th>Tanımı</th> 
+                                <th>Güncelle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(Kategoriler ktg in Model)
+                            {
+                                <tr>
+                                    <td><span class="label label-info">@ktg.KategoriAdi</span></td>
+                                    <td>@ktg.Tanimi</td>
+                                    <td><a href="/Kategori/Edit/@ktg.KategoriID" class="btn btn-primary">Güncelle</a></td>
+                                    <!--Kategori controlerındaki guncelle  actionuna gitsin giderkende kategori ıd götür-->
+                                    <!--AJAXLA SİL YAPMA İŞLEMİ SECTİON SCRİPTSDE VAR-->
+                                    <!--data ktg id arka planda sil butonlarına İD veriyor -->
+                                    <td><a href="#" class="btn btn-danger ktgSil" data-ktgid="@ktg.KategoriID">Sil</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{      
+        <script src="~/Content/assets/js/required/jquery-1.11.1.min.js"></script> 
+    <!-- AJAX İLE ASENKRON İŞLEM YAPTIK SAYFA DEĞİŞTİRMEDEN SİLME YAPTIK-->    
+    <script>
+            $(".ktgSil").click(function () {
+              var sonuc=confirm("Kayıt Silinsin mi?")//tamam ve iptal butonları için
+              if (sonuc == true) {
+                  var ktgId = $(this).data("ktgid");//ıd değerini aldık  sil butonunun
+                  $.ajax({      //silincek olanın ıd sini post olarak gönderme
+                      type: "POST",
+                      url: "/Kategori/Sil/"+ktgId,
+                      success: function () { //tamamam basarsak kayıt sılnıdı desın
+                          alert("Kayıt Silindi");
+                          window.location.replace("/Kategori/Index");//kategori ındex actıonuna gıtsın
+                      
+                      },
+                      error: function () {
+                          alert("Kayıt Silme Sırasında Hata Oluştu!");
+                      },
+                      });    
+              } 
+              else {
+              }
+            });
+        </script>
+    }

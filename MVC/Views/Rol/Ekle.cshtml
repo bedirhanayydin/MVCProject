@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Rol Ekle";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Rol Ekleme Sayfası
+                </div>
+                <div class="block-controls">
+                    <a href="/Rol/Index">
+                        <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    </a>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <form action="/Rol/Ekle" method="post" role="form">
+                        <!--ACTİON EKLEDIM URUN CONTOLOREDAKI URUNEKLEYE GÖNDERSIN-->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Rol(Yetki) Adı:</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Rol Adı Giriniz" name="RolAdi">
+                            <!--Place Holder Özelliği Hiçbişey Yazmayınca Arkada Gözüken Textdir-->
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                        <span id="hata">@ViewBag.Mesaj</span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

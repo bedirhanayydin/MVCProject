@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Kullanıcı Silme Ekranı";
+}
+
+@using MVC.Models
+@model aspnet_Users
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Kullanıcı Silme Sayfası
+                </div>
+                <div class="block-controls">
+                    <a href="/Kullanici/Index">
+                        <span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
+                    </a>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <form action="/Kullanici/Sil" method="post">
+                        <input type="hidden" name="UserId" value="@Model.UserId" />
+                        <label>@Model.UserName silinsin mi?</label>
+                        <input type="submit" name="name" value="Evet" class="btn btn-danger" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
